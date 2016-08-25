@@ -47,6 +47,7 @@ public class GameRoot : MonoBehaviour
 
         }
 
+        Spawn();
     }
 
     public void Spawn()
@@ -65,10 +66,6 @@ public class GameRoot : MonoBehaviour
                                                       distance * (float)Math.Sin((double)SpawnList[0].pi),
                                                       distance * (float)Math.Cos((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi)), Quaternion.identity);
                 SpawnList.RemoveAt(0);
-            }
-            else
-            {
-                
             }
             SpawnFlag = false;
         }

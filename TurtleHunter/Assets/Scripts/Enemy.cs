@@ -28,25 +28,21 @@ public class Enemy : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        transform.LookAt(_Player.transform);
-        obj.transform.LookAt(this.transform);
         if (!gameObject.GetComponent<MeshRenderer>().isVisible)
         {
             Debug.Log("invisible!");
             //나중에 이부분에 화살표도 안보이도록 설정할것!
         }
-        if(Enemy_HP <= 0)
+        if (Enemy_HP <= 0)
         {
-            Destroy(this);
             GameObject.Find("GameRoot").GetComponent<GameRoot>().Spawn();
-        }
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Enemy") || !other.CompareTag("Boss"))
-        {
+            Destroy(this);
             Destroy(obj);
-            Enemy_HP -= 1;
+        }
+        else
+        {
+            obj.transform.LookAt(this.transform);
+            transform.LookAt(_Player.transform);
         }
     }
 }

@@ -52,9 +52,7 @@ public class Bullet : MonoBehaviour {
     {
         if(other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
-            _player.GetComponent<CameraShake>().isDestroyed = true;
+            other.GetComponent<Enemy>().Enemy_HP -= 1;
         }
     }
 }

@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 56e660091adc98e468850a725ce96111, type: 2}
+  - {fileID: 2100000, guid: b0ccc7e945eda99409c786008172c42a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -163,3 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b_isExist: 0
   Arrow: {fileID: 1000011295471976, guid: 9499490013dfbe54890090d584afb806, type: 2}
+  Enemy_HP: 0
