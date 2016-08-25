@@ -164,3 +164,4 @@ MonoBehaviour:
   b_isExist: 0
   Arrow: {fileID: 1000011295471976, guid: 9499490013dfbe54890090d584afb806, type: 2}
   Enemy_HP: 0
+  s_Destroyed: {fileID: 8300000, guid: 79e1d6f52570f5745bfe714fd06d8333, type: 3}

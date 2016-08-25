@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour {
     BoxCollider _collider;
     float _size;
     public float speed;
+    private AudioSource pAudio;
+    public AudioClip s_Attack;
     // Use this for initialization
     void Start()
     {
@@ -15,7 +17,8 @@ public class Bullet : MonoBehaviour {
         _collider = GetComponent<BoxCollider>();
         _size = 1.0f;
         Bullet_State = State.MOVE;
-
+        pAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        pAudio.PlayOneShot(s_Attack);
         transform.LookAt(_player.transform.forward);
         
         GetComponent<Rigidbody>().AddForce(this.transform.forward* speed, ForceMode.VelocityChange);

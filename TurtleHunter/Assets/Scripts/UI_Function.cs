@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 using System.Collections;
-
 public class UI_Function : MonoBehaviour {
-
+    Button btn_Pause;
     bool pause_Clicked;
 	// Use this for initialization
 	void Start () {
@@ -11,10 +11,6 @@ public class UI_Function : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Quit();
-	}
-    public void Quit()
-    {
         if (Application.platform == RuntimePlatform.Android)
         {
             if (Input.GetKey(KeyCode.Escape))
@@ -22,6 +18,10 @@ public class UI_Function : MonoBehaviour {
                 Application.Quit();
             }
         }
+    }
+    public void Quit()
+    {
+       Application.Quit();
     }
     public void Pause(GameObject _btn)
     {

@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  s_Attack: {fileID: 8300000, guid: 767d368b89902594c8a956a9c04c4d9d, type: 3}

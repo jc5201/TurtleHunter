@@ -10,8 +10,11 @@ public class Enemy : MonoBehaviour {
     public int Enemy_HP;
     private GameObject _Player;
     private GameObject obj;
+    private AudioSource pAudio;
+    public AudioClip s_Destroyed;
     // Use this for initialization
     void Start () {
+        pAudio = gameObject.AddComponent<AudioSource>();
         switch (this.tag)
         {
             case "Enemy":
@@ -36,6 +39,8 @@ public class Enemy : MonoBehaviour {
         if (Enemy_HP <= 0)
         {
             GameObject.Find("GameRoot").GetComponent<GameRoot>().Spawn();
+            pAudio.volume = 3;
+            pAudio.PlayOneShot(s_Destroyed);
             Destroy(obj);
             Destroy(this.gameObject);
 
