@@ -43,6 +43,7 @@ public class GameRoot : MonoBehaviour
         foreach (string line in lines)
         {
             string[] arr = line.Split(',');
+            if (String.Compare(arr[0], "타임")==0) continue;
             SpawnList.Add(new EnemyData(float.Parse(arr[0]), "Enemy" + arr[1], (float)Math.PI / 360 * float.Parse(arr[2]), (float)Math.PI / 360 * float.Parse(arr[3])));
 
         }
