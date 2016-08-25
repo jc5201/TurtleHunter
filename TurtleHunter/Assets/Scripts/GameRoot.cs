@@ -14,6 +14,7 @@ public class GameRoot : MonoBehaviour
     private List<EnemyData> SpawnList = new List<EnemyData>(0);
     
     private bool SpawnFlag = false;
+    private Timer SpawnTimer = new Timer();
 
     private string filename = "EnemyLocation";
 
@@ -36,6 +37,9 @@ public class GameRoot : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SpawnTimer.Elapsed += SpawnTimer_Elapsed;
+        SpawnTimer.Interval = interval;
+        SpawnTimer.Start();
 
         TextAsset _txtFile = Resources.Load(filename, typeof(TextAsset)) as TextAsset;
         if (_txtFile.text == null) Debug.Log("text NULL");
@@ -51,9 +55,15 @@ public class GameRoot : MonoBehaviour
         Spawn();
     }
 
-    public void Spawn()
+    private void SpawnTimer_Elapsed(object sender, ElapsedEventArgs e)
     {
         SpawnFlag = true;
+        SpawnTimer.Enabled = false;
+    }
+
+    public void Spawn()
+    {
+        SpawnTimer.Enabled = true;
     }
 
     // Update is called once per frame
