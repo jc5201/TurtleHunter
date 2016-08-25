@@ -98,6 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 93497558}
+  - 114: {fileID: 93497559}
   m_Layer: 0
   m_Name: GameRoot
   m_TagString: Untagged
@@ -118,6 +119,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &93497559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93497557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e74df45d8d60542af8e670265b589d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyPrefab: {fileID: 1000013683555956, guid: 73ee2ad91d24e984da444341dd4d1788,
+    type: 2}
+  interval: 2000
+  distance: 5
 --- !u!1 &126226315
 GameObject:
   m_ObjectHideFlags: 0

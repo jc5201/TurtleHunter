@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
     State Enemy_State;
 	// Use this for initialization
 	void Start () {
+        transform.LookAt(GameObject.Find("Player").transform);
     }
 	
 	// Update is called once per frame
