@@ -11,6 +11,7 @@ public class InputScript : MonoBehaviour {
     void Start () {
         Player = GameObject.Find("Player");
         Player.transform.rotation = new Quaternion(0, 0, 0, 0);
+        Input.gyro.enabled = true;
 	}
 	
 	// Update is called once per frame
