@@ -94,7 +94,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.Company.TurtleHunter
-  bundleVersion: 0.8
+  bundleVersion: 0.82
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   xboxOneDisableKinectGpuReservation: 0

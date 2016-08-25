@@ -132,8 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 1000013683555956, guid: 73ee2ad91d24e984da444341dd4d1788,
     type: 2}
-  interval: 2000
+  interval: 1000
   distance: 10
+  filename: EnemyLocation.csv
 --- !u!1 &126226315
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +181,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
+  m_AreaSize: {x: 10, y: 10}
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -630,7 +631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   o_bullet: {fileID: 1000013132497358, guid: bc7f9a07ad517eb4b913a0b43c92c482, type: 2}
-  rate: 3
 --- !u!1 &2136393279
 GameObject:
   m_ObjectHideFlags: 0
