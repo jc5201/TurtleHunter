@@ -92,10 +92,9 @@ public class GameRoot : MonoBehaviour {
         {
             if (SpawnList.Count != 0)
             {
-                
-                Instantiate(EnemyPrefab, new Vector3( distance * (float)Math.Sin((double)SpawnList[0].Key) * (float)Math.Cos((double)SpawnList[0].Value), 
-                                                      distance * (float)Math.Cos((double)SpawnList[0].Key) * (float)Math.Sin((double)SpawnList[0].Value), 
-                                                      distance * (float)Math.Cos((double)SpawnList[0].Key)), Quaternion.identity);
+                Instantiate(EnemyPrefab, new Vector3( distance * (float)Math.Sin((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi), 
+                                                      distance * (float)Math.Cos((double)SpawnList[0].theta) * (float)Math.Sin((double)SpawnList[0].pi), 
+                                                      distance * (float)Math.Cos((double)SpawnList[0].theta)), Quaternion.identity);
                 SpawnList.RemoveAt(0);
             }
             else
