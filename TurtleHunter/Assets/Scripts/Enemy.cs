@@ -12,9 +12,10 @@ public class Enemy : MonoBehaviour {
     private GameObject obj;
     private AudioSource pAudio;
     public AudioClip s_Destroyed;
+    public GameObject Effect_Destroyed;
     // Use this for initialization
     void Start () {
-        pAudio = gameObject.AddComponent<AudioSource>();
+        pAudio = GetComponent<AudioSource>();
         switch (this.tag)
         {
             case "Enemy":
@@ -38,9 +39,11 @@ public class Enemy : MonoBehaviour {
         }
         if (Enemy_HP <= 0)
         {
+            Instantiate(Effect_Destroyed, transform.position, Quaternion.identity);
             GameObject.Find("GameRoot").GetComponent<GameRoot>().Spawn();
-            pAudio.volume = 3;
+            pAudio.volume = 10.0f;
             pAudio.PlayOneShot(s_Destroyed);
+            pAudio.spatialBlend = 0;
             Destroy(obj);
             Destroy(this.gameObject);
 
