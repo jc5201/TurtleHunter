@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
     private Transform _player;
     BoxCollider _collider;
     float _size;
+    public float speed;
 
     // Use this for initialization
     void Start()
@@ -15,6 +16,11 @@ public class Bullet : MonoBehaviour {
         _collider = GetComponent<BoxCollider>();
         _size = 1.0f;
         Bullet_State = State.MOVE;
+
+        transform.LookAt(_player.transform.forward);
+        
+        GetComponent<Rigidbody>().AddForce(this.transform.forward* speed, ForceMode.VelocityChange);
+
     }
 
     // Update is called once per frame
@@ -36,11 +42,9 @@ public class Bullet : MonoBehaviour {
     }
     void Bullet_Move()
     {
-        //Vector3 dir = _player.transform.position - this.transform.position;
-        //this.transform.LookAt(_player.transform.position);
-        //this.transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+        
         _size += 0.1f;
-        transform.Translate(transform.forward);
+        
         _collider.size = new Vector3(_size, _size, 1.0f);
     }
     void Bullet_Destroy()
