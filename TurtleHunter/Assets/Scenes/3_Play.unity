@@ -133,7 +133,7 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 1000013683555956, guid: 73ee2ad91d24e984da444341dd4d1788,
     type: 2}
   interval: 2000
-  distance: 5
+  distance: 10
 --- !u!1 &126226315
 GameObject:
   m_ObjectHideFlags: 0
