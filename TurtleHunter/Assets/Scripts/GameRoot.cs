@@ -5,7 +5,8 @@ using System.Timers;
 using System;
 using System.IO;
 
-public class GameRoot : MonoBehaviour {
+public class GameRoot : MonoBehaviour
+{
 
     public GameObject EnemyPrefab;
     public float interval, distance;
@@ -35,7 +36,8 @@ public class GameRoot : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         SpawnTimer.Elapsed += SpawnTimer_Elapsed;
         SpawnTimer.Interval = interval;
         SpawnTimer.Start();
@@ -44,13 +46,13 @@ public class GameRoot : MonoBehaviour {
         TextAsset _txtFile = Resources.Load(filename, typeof(TextAsset)) as TextAsset;
         if (_txtFile.text == null) Debug.Log("text NULL");
         string[] lines = _txtFile.text.Split('\n');
-        foreach(string line in lines)
+        foreach (string line in lines)
         {
             string[] arr = line.Split(',');
             SpawnList.Add(new EnemyData(float.Parse(arr[0]), "Enemy" + arr[1], (float)Math.PI / 360 * float.Parse(arr[2]), (float)Math.PI / 360 * float.Parse(arr[3])));
-            
+
         }
-        
+
     }
 
     private void SpawnTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -59,15 +61,16 @@ public class GameRoot : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         if (SpawnFlag)
         {
             if (SpawnList.Count != 0)
             {
-                Instantiate(EnemyPrefab, new Vector3( distance * (float)Math.Sin((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi), 
-                                                      distance * (float)Math.Cos((double)SpawnList[0].theta) * (float)Math.Sin((double)SpawnList[0].pi), 
-                                                      distance * (float)Math.Cos((double)SpawnList[0].theta)), Quaternion.identity);
+                Instantiate(EnemyPrefab, new Vector3(distance * (float)Math.Sin((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi),
+                                                      distance * (float)Math.Sin((double)SpawnList[0].pi),
+                                                      distance * (float)Math.Cos((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi)), Quaternion.identity);
                 SpawnList.RemoveAt(0);
             }
             else
