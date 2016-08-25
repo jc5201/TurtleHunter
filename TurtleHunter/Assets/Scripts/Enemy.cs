@@ -36,8 +36,9 @@ public class Enemy : MonoBehaviour {
         if (Enemy_HP <= 0)
         {
             GameObject.Find("GameRoot").GetComponent<GameRoot>().Spawn();
-            Destroy(this);
             Destroy(obj);
+            Destroy(this.gameObject);
+
         }
         else
         {

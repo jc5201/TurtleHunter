@@ -50,9 +50,10 @@ public class Bullet : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
+        if (other.GetComponent<Enemy>())
         {
             other.GetComponent<Enemy>().Enemy_HP -= 1;
+            Bullet_State = State.DESTROY;
         }
     }
 }
