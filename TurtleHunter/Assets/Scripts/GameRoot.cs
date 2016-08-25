@@ -23,6 +23,11 @@ public class GameRoot : MonoBehaviour {
         //List 초기화
 
         SpawnList.Add(new KeyValuePair<float, float>(0, 0));
+        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * 30));
+        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * 60));
+
+
+        SpawnList.Add(new KeyValuePair<float, float>(0, 0));
         SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * -15, (float)Math.PI / 360 * 15));
         SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * 15, (float)Math.PI / 360 * -15));
         SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * 15, (float)Math.PI / 360 * 15));
@@ -59,7 +64,9 @@ public class GameRoot : MonoBehaviour {
         {
             if (SpawnList.Count != 0)
             {
-                Instantiate(EnemyPrefab, new Vector3( distance * (float)Math.Sin((double)SpawnList[0].Key) * (float)Math.Cos((double)SpawnList[0].Value), distance * (float)Math.Sin((double)SpawnList[0].Key) * (float)Math.Sin((double)SpawnList[0].Value), distance * (float)Math.Cos((double)SpawnList[0].Key)), Quaternion.identity);
+                Instantiate(EnemyPrefab, new Vector3( distance * (float)Math.Sin((double)SpawnList[0].Key) * (float)Math.Cos((double)SpawnList[0].Value), 
+                                                      distance * (float)Math.Cos((double)SpawnList[0].Key) * (float)Math.Sin((double)SpawnList[0].Value), 
+                                                      distance * (float)Math.Cos((double)SpawnList[0].Key)), Quaternion.identity);
                 SpawnList.RemoveAt(0);
             }
             else
