@@ -10,9 +10,11 @@ public class GameRoot : MonoBehaviour
 
     public GameObject EnemyPrefab;
     public float interval, distance;
-    
+
+    //private List<KeyValuePair<float, float>> SpawnList = new List<KeyValuePair<float, float>>(0);
     private List<EnemyData> SpawnList = new List<EnemyData>(0);
-    
+
+    private Timer SpawnTimer = new Timer();
     private bool SpawnFlag = false;
 
     private string filename = "EnemyLocation";
@@ -36,6 +38,10 @@ public class GameRoot : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SpawnTimer.Elapsed += SpawnTimer_Elapsed;
+        SpawnTimer.Interval = interval;
+        SpawnTimer.Start();
+
 
         TextAsset _txtFile = Resources.Load(filename, typeof(TextAsset)) as TextAsset;
         if (_txtFile.text == null) Debug.Log("text NULL");
@@ -49,7 +55,7 @@ public class GameRoot : MonoBehaviour
 
     }
 
-    public void Spawn()
+    private void SpawnTimer_Elapsed(object sender, ElapsedEventArgs e)
     {
         SpawnFlag = true;
     }
@@ -57,6 +63,7 @@ public class GameRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (SpawnFlag)
         {
             if (SpawnList.Count != 0)
@@ -68,7 +75,7 @@ public class GameRoot : MonoBehaviour
             }
             else
             {
-                
+                SpawnTimer.Stop();
             }
             SpawnFlag = false;
         }
