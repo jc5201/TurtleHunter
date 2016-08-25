@@ -17,8 +17,7 @@ public class InputScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //플레이어 회전
-        Debug.Log(Input.gyro.rotationRateUnbiased);
-        Player.transform.Rotate(-1 * Input.gyro.rotationRateUnbiased.x, -1 * Input.gyro.rotationRateUnbiased.y, Input.gyro.rotationRateUnbiased.z);
+        Player.transform.Rotate(-1 * Input.gyro.rotationRateUnbiased.x , -1 * Input.gyro.rotationRateUnbiased.y , Input.gyro.rotationRateUnbiased.z );
         Touched();
     }
 

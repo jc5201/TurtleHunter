@@ -16,8 +16,7 @@ public class GameRoot : MonoBehaviour {
     private Timer SpawnTimer = new Timer();
     private bool SpawnFlag = false;
 
-    public string filename = "EnemyLocation.csv";
-    private StreamReader reader;
+    private string filename = "EnemyLocation";
 
     private struct EnemyData
     {
@@ -40,11 +39,11 @@ public class GameRoot : MonoBehaviour {
         SpawnTimer.Elapsed += SpawnTimer_Elapsed;
         SpawnTimer.Interval = interval;
         SpawnTimer.Start();
-        
-        
-        
-        reader = new StreamReader(filename);
-        string[] lines = reader.ReadToEnd().Split('\n');
+
+
+        TextAsset _txtFile = Resources.Load(filename, typeof(TextAsset)) as TextAsset;
+        if (_txtFile.text == null) Debug.Log("text NULL");
+        string[] lines = _txtFile.text.Split('\n');
         foreach(string line in lines)
         {
             string[] arr = line.Split(',');
