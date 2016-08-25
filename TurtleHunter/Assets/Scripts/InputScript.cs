@@ -23,12 +23,12 @@ public class InputScript : MonoBehaviour {
 
     void Touched()//터치 관련 함수
     {
-        if (Input.touchCount == 1)
+        if (Input.touchCount >= 1)
         //if(Input.GetMouseButton(0))//임시방편 마우스 클릭
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                Handheld.Vibrate();
+                //Handheld.Vibrate();
                 Instantiate(o_bullet, Player.transform.position, Player.transform.rotation);
             }
             //Debug.Log("Touchded");
