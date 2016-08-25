@@ -6,6 +6,7 @@ public class InputScript : MonoBehaviour {
 
     private GameObject Player;
     public GameObject o_bullet;
+    public int rate = 3;
 
     // Use this for initialization
     void Start () {
@@ -17,7 +18,8 @@ public class InputScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //플레이어 회전
-        Player.transform.Rotate(-1 * Input.gyro.rotationRateUnbiased.x, -1 * Input.gyro.rotationRateUnbiased.y, Input.gyro.rotationRateUnbiased.z);
+        Debug.Log(Input.gyro.rotationRateUnbiased);
+        Player.transform.Rotate(-1 * Input.gyro.rotationRateUnbiased.x* rate, -1 * Input.gyro.rotationRateUnbiased.y* rate, Input.gyro.rotationRateUnbiased.z* rate);
         Touched();
     }
 
