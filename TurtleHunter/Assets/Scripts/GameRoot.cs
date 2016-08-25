@@ -48,36 +48,10 @@ public class GameRoot : MonoBehaviour {
         foreach(string line in lines)
         {
             string[] arr = line.Split(',');
-            SpawnList.Add(new EnemyData(float.Parse(arr[0]), "Enemy"+arr[1], float.Parse(arr[2]), float.Parse(arr[3])));
+            SpawnList.Add(new EnemyData(float.Parse(arr[0]), "Enemy" + arr[1], (float)Math.PI / 360 * float.Parse(arr[2]), (float)Math.PI / 360 * float.Parse(arr[3])));
             
         }
         
-    
-        /*
-        //List 초기화
-        SpawnList.Add(new KeyValuePair<float, float>(0, 0));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * -15, (float)Math.PI / 360 * 15));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * 15, (float)Math.PI / 360 * -15));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * 15, (float)Math.PI / 360 * 15));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * -30, 0));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * -60, 0));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * -90, 0));
-        SpawnList.Add(new KeyValuePair<float, float>(0, 0));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * 30, 0));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * 60, 0));
-        SpawnList.Add(new KeyValuePair<float, float>((float)Math.PI / 360 * 90, 0));
-        SpawnList.Add(new KeyValuePair<float, float>(0, 0));
-        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * 30));
-        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * 60));
-        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * 90));
-        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * 60));
-        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * 30));
-        SpawnList.Add(new KeyValuePair<float, float>(0, 0));
-        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * -30));
-        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * -60));
-        SpawnList.Add(new KeyValuePair<float, float>(0, (float)Math.PI / 360 * -90));
-        SpawnList.Add(new KeyValuePair<float, float>(0, 0));
-        */
     }
 
     private void SpawnTimer_Elapsed(object sender, ElapsedEventArgs e)
