@@ -151,10 +151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e74df45d8d60542af8e670265b589d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 1000013683555956, guid: 73ee2ad91d24e984da444341dd4d1788,
+  EnemyAPrefab: {fileID: 1000010258551766, guid: d2e86cfd082b5b648b75a06e37daf430,
     type: 2}
-  interval: 1500
+  EnemyBPrefab: {fileID: 1000013683555956, guid: 73ee2ad91d24e984da444341dd4d1788,
+    type: 2}
+  interval: 500
   distance: 10
+  NormalBackground: {fileID: 0}
+  BossBackground: {fileID: 0}
 --- !u!114 &93497560
 MonoBehaviour:
   m_ObjectHideFlags: 0

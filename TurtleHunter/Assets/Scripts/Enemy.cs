@@ -19,11 +19,14 @@ public class Enemy : MonoBehaviour {
         pAudio = GetComponent<AudioSource>();
         switch (this.tag)
         {
-            case "Enemy":
+            case "EnemyA":
                 Enemy_HP = 1;
                 break;
-            case "Boss":
+            case "EnemyB":
                 Enemy_HP = 3;
+                break;
+            case "Boss":
+                Enemy_HP = 25;
                 break;
         }
         _Player = GameObject.Find("Player");
@@ -45,10 +48,12 @@ public class Enemy : MonoBehaviour {
         else
         {
             Att_time += Time.deltaTime;
-            if (this.CompareTag("Enemy"))
+            if (this.CompareTag("EnemyA") || this.CompareTag("EnemyB"))
             {
                 if (Att_time > 4.0f)
                 {
+                    Handheld.Vibrate();
+                    _Player.GetComponent<Player>().HP -= 1;
                     Att_time = 0;
                     Delete();
                 }

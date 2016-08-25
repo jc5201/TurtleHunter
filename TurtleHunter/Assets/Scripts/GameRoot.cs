@@ -8,7 +8,8 @@ using System.IO;
 public class GameRoot : MonoBehaviour
 {
 
-    public GameObject EnemyPrefab;
+    public GameObject EnemyAPrefab;
+    public GameObject EnemyBPrefab;
     public float interval, distance;
     
     private List<EnemyData> SpawnList = new List<EnemyData>(0);
@@ -17,6 +18,10 @@ public class GameRoot : MonoBehaviour
     private Timer SpawnTimer = new Timer();
 
     private string filename = "EnemyLocation";
+    
+    public AudioClip NormalBackground;
+    public AudioClip BossBackground;
+    private AudioSource backAudio;
 
     private struct EnemyData
     {
@@ -37,6 +42,8 @@ public class GameRoot : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        backAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+
         SpawnTimer.Elapsed += SpawnTimer_Elapsed;
         SpawnTimer.Interval = interval;
         SpawnTimer.Start();
@@ -73,12 +80,32 @@ public class GameRoot : MonoBehaviour
         {
             if (SpawnList.Count != 0)
             {
-                Instantiate(EnemyPrefab, new Vector3(distance * (float)Math.Sin((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi),
+                switch (SpawnList[0].type)
+                {
+                    case "EnemyA":
+                        Instantiate(EnemyAPrefab, new Vector3(distance * (float)Math.Sin((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi),
                                                       distance * (float)Math.Sin((double)SpawnList[0].pi),
                                                       distance * (float)Math.Cos((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi)), Quaternion.identity);
+                        break;
+                    case "EnemyB":
+                        Instantiate(EnemyBPrefab, new Vector3(distance * (float)Math.Sin((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi),
+                                                      distance * (float)Math.Sin((double)SpawnList[0].pi),
+                                                      distance * (float)Math.Cos((double)SpawnList[0].theta) * (float)Math.Cos((double)SpawnList[0].pi)), Quaternion.identity);
+                        break;
+                }
+                
                 SpawnList.RemoveAt(0);
             }
             SpawnFlag = false;
         }
+    }
+
+    public void BossMusic()
+    {
+        backAudio.PlayOneShot(BossBackground);
+    }
+    public void NormalMusic()
+    {
+        backAudio.PlayOneShot(NormalBackground);
     }
 }
