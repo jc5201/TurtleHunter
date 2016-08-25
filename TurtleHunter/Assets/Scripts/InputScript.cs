@@ -18,19 +18,20 @@ public class InputScript : MonoBehaviour {
 	void Update () {
         //플레이어 회전
         Player.transform.Rotate(-1 * Input.gyro.rotationRateUnbiased.x, -1 * Input.gyro.rotationRateUnbiased.y, Input.gyro.rotationRateUnbiased.z);
+        Touched();
+    }
 
-
-        if (Input.touchCount == 1)//터치
+    void Touched()//터치 관련 함수
+    {
+        if (Input.touchCount == 1)
         //if(Input.GetMouseButton(0))//임시방편 마우스 클릭
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
-                Instantiate(o_bullet);
-            Debug.Log("Touchded");
+            {
+                Handheld.Vibrate();
+                Instantiate(o_bullet, Player.transform.position, Player.transform.rotation);
+            }
+            //Debug.Log("Touchded");
         }
-    }
-
-    void Touched()
-    {
-        Handheld.Vibrate();
     }
 }
