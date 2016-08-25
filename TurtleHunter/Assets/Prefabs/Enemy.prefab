@@ -23,6 +23,7 @@ GameObject:
   - 65: {fileID: 65000010575131446}
   - 23: {fileID: 23000011542358988}
   - 82: {fileID: 82000010672026176}
+  - 54: {fileID: 54000011436580696}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -139,6 +140,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013891766014}
   m_Mesh: {fileID: 4300000, guid: 6f2243b6c558d06419b0b6f73db2ba84, type: 3}
+--- !u!54 &54000011436580696
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013683555956}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65000010575131446
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -160,7 +176,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 79e1d6f52570f5745bfe714fd06d8333, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 51db0a1ab698ad148b86556b2a67780b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -239,5 +255,5 @@ MonoBehaviour:
   b_isExist: 0
   Arrow: {fileID: 1000011295471976, guid: 9499490013dfbe54890090d584afb806, type: 2}
   Enemy_HP: 0
-  s_Destroyed: {fileID: 8300000, guid: 79e1d6f52570f5745bfe714fd06d8333, type: 3}
+  s_Destroyed: {fileID: 8300000, guid: 51db0a1ab698ad148b86556b2a67780b, type: 3}
   Effect_Destroyed: {fileID: 100006, guid: bcf46e46336114145b09deb1db11d480, type: 2}

@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour {
     private AudioSource pAudio;
     public AudioClip s_Destroyed;
     public GameObject Effect_Destroyed;
+    private float Att_time;
     // Use this for initialization
     void Start () {
         pAudio = GetComponent<AudioSource>();
@@ -39,19 +40,35 @@ public class Enemy : MonoBehaviour {
         }
         if (Enemy_HP <= 0)
         {
-            Instantiate(Effect_Destroyed, transform.position, Quaternion.identity);
-            GameObject.Find("GameRoot").GetComponent<GameRoot>().Spawn();
-            pAudio.volume = 10.0f;
-            pAudio.PlayOneShot(s_Destroyed);
-            pAudio.spatialBlend = 0;
-            Destroy(obj);
-            Destroy(this.gameObject);
-
+            Delete();
         }
         else
         {
+            Att_time += Time.deltaTime;
+            if (this.CompareTag("Enemy"))
+            {
+                if (Att_time > 4.0f)
+                {
+                    Att_time = 0;
+                    Delete();
+                }
+            }
             obj.transform.LookAt(this.transform);
             transform.LookAt(_Player.transform);
+            //transform.Translate(this.transform.localPosition * 0.005f);
+            GetComponent<Rigidbody>().AddForce(this.transform.forward * 0.01f, ForceMode.VelocityChange);
         }
+    }
+    public void Delete()
+    {
+        GameObject eff = Instantiate(Effect_Destroyed, transform.position, Quaternion.identity) as GameObject;
+        Destroy(eff, 2f);
+        GameObject.Find("GameRoot").GetComponent<GameRoot>().Spawn();
+        pAudio.PlayOneShot(s_Destroyed);
+        pAudio.volume = 10.0f;
+        pAudio.spatialBlend = 0;
+        
+        Destroy(obj);
+        Destroy(this.gameObject);
     }
 }
