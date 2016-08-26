@@ -50,9 +50,9 @@ public class Enemy : MonoBehaviour {
             Delete();
             if(this.CompareTag("Boss"))
             {
+                //pAudio.PlayOneShot(s_Cleared);
+                GameObject.Find("Clear").GetComponent<RectTransform>().rotation = new Quaternion(0,0,0,0);
                 Time.timeScale = 0;
-                GameObject.Find("Clear").SetActive(true);
-                pAudio.PlayOneShot(s_Cleared);
             }
         }
         else
@@ -80,12 +80,14 @@ public class Enemy : MonoBehaviour {
     {
         GameObject eff = Instantiate(Effect_Destroyed, transform.position, Quaternion.identity) as GameObject;
         Destroy(eff, 2f);
-        GameObject.Find("GameRoot").GetComponent<GameRoot>().Spawn();
-        pAudio.PlayOneShot(s_Destroyed);
-        pAudio.volume = 10.0f;
-        pAudio.spatialBlend = 0;
         if (!this.CompareTag("Boss"))
+        {
+            GameObject.Find("GameRoot").GetComponent<GameRoot>().Spawn();
+            pAudio.PlayOneShot(s_Destroyed);
+            pAudio.volume = 10.0f;
+            pAudio.spatialBlend = 0;
             Destroy(obj);
+        }
         Destroy(this.gameObject);
     }
 }

@@ -6,7 +6,7 @@ public class Boss_Pattern : MonoBehaviour {
     //Hashtable hs;
     GameObject player;
     public GameObject Spawn_Enemy;
-    public Transform Spawn_Position;
+    private Transform Spawn_Position;
     //public Transform[3] SpawnPosition;
 
     void Start()

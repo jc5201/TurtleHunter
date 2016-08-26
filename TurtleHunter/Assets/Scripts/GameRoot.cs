@@ -14,7 +14,8 @@ public class GameRoot : MonoBehaviour
     public float interval, distance;
     
     private List<EnemyData> SpawnList = new List<EnemyData>(0);
-    
+
+    private bool BossSpawned = false;
     private bool SpawnFlag = false;
     private Timer SpawnTimer = new Timer();
 
@@ -97,10 +98,11 @@ public class GameRoot : MonoBehaviour
                 
                 SpawnList.RemoveAt(0);
             }
-            else
+            else if(!BossSpawned)
             {
                 GameObject boss = Instantiate(EnemyBoss, GameObject.Find("Boss_Spawn").transform) as GameObject;
                 BossMusic();
+                BossSpawned = true;
             }
             SpawnFlag = false;
         }
