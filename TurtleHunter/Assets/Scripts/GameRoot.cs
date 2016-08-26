@@ -10,6 +10,7 @@ public class GameRoot : MonoBehaviour
 
     public GameObject EnemyAPrefab;
     public GameObject EnemyBPrefab;
+    public GameObject EnemyBoss;
     public float interval, distance;
     
     private List<EnemyData> SpawnList = new List<EnemyData>(0);
@@ -96,16 +97,23 @@ public class GameRoot : MonoBehaviour
                 
                 SpawnList.RemoveAt(0);
             }
+            else
+            {
+                GameObject boss = Instantiate(EnemyBoss, GameObject.Find("Boss_Spawn").transform) as GameObject;
+                BossMusic();
+            }
             SpawnFlag = false;
         }
     }
 
     public void BossMusic()
     {
-        backAudio.PlayOneShot(BossBackground);
+        backAudio.clip = BossBackground;
+        backAudio.Play();
     }
     public void NormalMusic()
     {
-        backAudio.PlayOneShot(NormalBackground);
+        backAudio.clip = NormalBackground;
+        backAudio.Play();
     }
 }

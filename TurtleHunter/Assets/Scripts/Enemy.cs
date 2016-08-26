@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour {
     private GameObject obj;
     private AudioSource pAudio;
     public AudioClip s_Destroyed;
+    public AudioClip s_Cleared;
     public GameObject Effect_Destroyed;
     private float Att_time;
     // Use this for initialization
@@ -30,9 +31,12 @@ public class Enemy : MonoBehaviour {
                 break;
         }
         _Player = GameObject.Find("Player");
-        Arrow_Position = GameObject.Find("ArrowPosition");
-        obj = Instantiate(Arrow, Arrow_Position.transform.position, Arrow_Position.transform.rotation) as GameObject;
-        obj.transform.parent = Arrow_Position.transform;
+        if (!this.CompareTag("Boss"))
+        {
+            Arrow_Position = GameObject.Find("ArrowPosition");
+            obj = Instantiate(Arrow, Arrow_Position.transform.position, Arrow_Position.transform.rotation) as GameObject;
+            obj.transform.parent = Arrow_Position.transform;
+        }
     }
 	// Update is called once per frame
 	void Update () {
@@ -44,6 +48,12 @@ public class Enemy : MonoBehaviour {
         if (Enemy_HP <= 0)
         {
             Delete();
+            if(this.CompareTag("Boss"))
+            {
+                Time.timeScale = 0;
+                GameObject.Find("Clear").SetActive(true);
+                pAudio.PlayOneShot(s_Cleared);
+            }
         }
         else
         {
@@ -57,11 +67,13 @@ public class Enemy : MonoBehaviour {
                     Att_time = 0;
                     Delete();
                 }
+                obj.transform.LookAt(this.transform);
+                GetComponent<Rigidbody>().AddForce(this.transform.forward * 0.01f, ForceMode.VelocityChange);
             }
-            obj.transform.LookAt(this.transform);
+            
             transform.LookAt(_Player.transform);
             //transform.Translate(this.transform.localPosition * 0.005f);
-            GetComponent<Rigidbody>().AddForce(this.transform.forward * 0.01f, ForceMode.VelocityChange);
+
         }
     }
     public void Delete()
@@ -72,8 +84,8 @@ public class Enemy : MonoBehaviour {
         pAudio.PlayOneShot(s_Destroyed);
         pAudio.volume = 10.0f;
         pAudio.spatialBlend = 0;
-        
-        Destroy(obj);
+        if (!this.CompareTag("Boss"))
+            Destroy(obj);
         Destroy(this.gameObject);
     }
 }

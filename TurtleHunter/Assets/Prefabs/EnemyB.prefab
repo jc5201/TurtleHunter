@@ -256,4 +256,5 @@ MonoBehaviour:
   Arrow: {fileID: 1000011295471976, guid: 9499490013dfbe54890090d584afb806, type: 2}
   Enemy_HP: 0
   s_Destroyed: {fileID: 8300000, guid: 51db0a1ab698ad148b86556b2a67780b, type: 3}
+  s_Cleared: {fileID: 8300000, guid: 2a59dbc08a8a0ef4aa39ef066c768515, type: 3}
   Effect_Destroyed: {fileID: 100006, guid: bcf46e46336114145b09deb1db11d480, type: 2}
